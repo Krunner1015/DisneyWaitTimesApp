@@ -14,7 +14,7 @@ DISNEY_PARKS = {
 def get_parks():
     return DISNEY_PARKS
 
-@app.get("waittimes/{park_id}")
+@app.get("/waittimes/{park_id}")
 def get_wait_times(park_id: int):
     url = f"https://queue-times.com/parks/{park_id}/queue_times.json"
 
@@ -40,6 +40,7 @@ def get_wait_times(park_id: int):
         })
     
     return {
+        "park_id": park_id,
         "park": DISNEY_PARKS[park_id], 
         "lands": result
     }
