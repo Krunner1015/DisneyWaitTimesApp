@@ -1,7 +1,16 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import requests
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 DISNEY_PARKS = {
     6: "Magic Kingdom",
@@ -18,9 +27,14 @@ def get_parks():
 def get_wait_times(park_id: int):
     url = f"https://queue-times.com/parks/{park_id}/queue_times.json"
 
-    response = requests.get(url)
+    try:
+        response = requests.get(url, timeout=10)
+        data = response.json()
 
-    data = response.json()
+    except requests.exceptions.RequestException:
+        return {
+            "error": "Could not retrieve wait times"
+        }
 
     result = []
 
