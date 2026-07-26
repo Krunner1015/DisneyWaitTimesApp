@@ -45,7 +45,8 @@ def get_wait_times(park_id: int):
             rides.append({
                 "name": ride["name"], 
                 "wait_time": ride["wait_time"], 
-                "open": ride["is_open"]
+                "open": ride["is_open"],
+                "last_updated": ride["last_updated"]
             })
         
         result.append({

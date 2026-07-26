@@ -29,13 +29,33 @@ function displayWaitTimes(data) {
     ridesDiv.appendChild(title);
 
 
+    // Show last updated time
+    const updated = document.createElement("p");
+
+    const firstRide = data.lands
+        .flatMap(land => land.rides)
+        .find(ride => ride.last_updated);
+
+    if (firstRide) {
+        const time = new Date(firstRide.last_updated);
+
+        updated.textContent =
+            "Updated: " + time.toLocaleTimeString([], {
+                hour: "numeric",
+                minute: "2-digit"
+            });
+
+        updated.className = "updated-time";
+
+        ridesDiv.appendChild(updated);
+    }
+
+
     // Loop through lands
     data.lands.forEach(land => {
 
         // Remove hidden rides first
-        const visibleRides = land.rides.filter(
-            ride => !HIDDEN_RIDES.includes(ride.name)
-        );
+        const visibleRides = land.rides.filter(ride => !isHiddenRide(ride.name));
 
         // Skip this land if nothing is left
         if (visibleRides.length === 0) {
@@ -94,8 +114,15 @@ function displayWaitTimes(data) {
 
 }
 
-function getRideName(name) {
+function getRideName(originalName) {
 
-    return RIDE_DATA[name]?.displayName || name;
+    if (RIDE_DATA[originalName]?.displayName) {
+        return RIDE_DATA[originalName].displayName;
+    }
 
+    return originalName;
+}
+
+function isHiddenRide(originalName) {
+    return RIDE_DATA[originalName]?.hidden === true;
 }

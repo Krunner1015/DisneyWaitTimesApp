@@ -1,135 +1,179 @@
 const RIDE_DATA = {
     "\"it's a small world\"": {
-        displayName: "Small World"
+        displayName: "Small World",
+        hidden: false
     },
     "Seven Dwarfs Mine Train": {
-        displayName: "Mine Train"
+        displayName: "Mine Train",
+        hidden: false
     },
     "TRON Lightcycle / Run": {
-        displayName: "TRON"
+        displayName: "TRON",
+        hidden: false
     },
     "Pirates of the Caribbean": {
-        displayName: "Pirate's"
+        displayName: "Pirate's",
+        hidden: false
     },
     "Peter Pan's Flight": {
-        displayName: "Peter Pan"
+        displayName: "Peter Pan",
+        hidden: false
     },
     "Tiana's Bayou Adventure": {
-        displayName: "Tiana"
+        displayName: "Tiana",
+        hidden: false
     },
     "Swiss Family Treehouse": {
-        displayName: "Treehouse"
+        displayName: "Treehouse",
+        hidden: false
     },
     "The Magic Carpets of Aladdin": {
-        displayName: "Carpets"
+        displayName: "Carpets",
+        hidden: false
     },
     "The Many Adventures of Winnie the Pooh": {
-        displayName: "Winnie the Pooh"
+        displayName: "Winnie the Pooh",
+        hidden: false
     },
     "The Barnstormer": {
-        displayName: "Barnstormer"
+        displayName: "Barnstormer",
+        hidden: false
     },
     "Walt Disney's Enchanted Tiki Room": {
-        displayName: "Tiki Room"
+        displayName: "Tiki Room",
+        hidden: false
     },
     "Dumbo the Flying Elephant": {
-        displayName: "Dumbo"
+        displayName: "Dumbo",
+        hidden: false
     },
     "Mad Tea Party": {
-        displayName: "Tea Cups"
+        displayName: "Tea Cups",
+        hidden: false
     },
     "Mickey's PhilharMagic": {
-        displayName: "PhilharMagic"
+        displayName: "PhilharMagic",
+        hidden: false
     },
     "Prince Charming Regal Carrousel": {
-        displayName: "Carrousel"
+        displayName: "Carrousel",
+        hidden: false
     },
     "Under the Sea - Journey of The Little Mermaid": {
-        displayName: "Ariel"
+        displayName: "Ariel",
+        hidden: false
     },
     "Big Thunder Mountain Railroad": {
-        displayName: "Thunder Mountain"
+        displayName: "Thunder Mountain",
+        hidden: false
     },
     "Buzz Lightyear’s Space Ranger Spin": {
-        displayName: "Buzz"
+        displayName: "Buzz",
+        hidden: false
     },
     "Tomorrowland Speedway": {
-        displayName: "Speedway"
+        displayName: "Speedway",
+        hidden: false
     },
     "Tomorrowland Transit Authority PeopleMover": {
-        displayName: "PeopleMover"
+        displayName: "PeopleMover",
+        hidden: false
     },
     "Journey Into Imagination With Figment": {
-        displayName: "Figment"
+        displayName: "Figment",
+        hidden: false
     },
     "Guardians of the Galaxy: Cosmic Rewind": {
-        displayName: "Guardians of the Galaxy"
+        displayName: "Guardians of the Galaxy",
+        hidden: false
     },
     "Test Track Presented by Chevrolet Single Rider": {
-        displayName: "Test Track: Single Rider"
+        displayName: "Test Track: Single Rider",
+        hidden: false
     },
     "Journey of Water, Inspired by Moana": {
-        displayName: "Moana"
+        displayName: "Moana",
+        hidden: false
     },
     "Soarin' Across America": {
-        displayName: "Soarin"
+        displayName: "Soarin",
+        hidden: false
     },
     "The Seas with Nemo & Friends": {
-        displayName: "Nemo"
+        displayName: "Nemo",
+        hidden: false
     },
     "Frozen Ever After": {
-        displayName: "Frozen"
+        displayName: "Frozen",
+        hidden: false
     },
     "Gran Fiesta Tour Starring The Three Caballeros": {
-        displayName: "Three Caballeros"
+        displayName: "Three Caballeros",
+        hidden: false
     },
     "Remy's Ratatouille Adventure": {
-        displayName: "Ratatouille"
+        displayName: "Ratatouille",
+        hidden: false
     },
     "Remy's Ratatouille Adventure Single Rider": {
-        displayName: "Ratatouille: Single Rider"
+        displayName: "Ratatouille: Single Rider",
+        hidden: false
     },
     "Indiana Jones™ Epic Stunt Spectacular!": {
-        displayName: "Indiana Jones"
+        displayName: "Indiana Jones",
+        hidden: false
     },
     "Star Tours – The Adventures Continue": {
-        displayName: "Star Tours"
+        displayName: "Star Tours",
+        hidden: false
     },
     "Mickey & Minnie's Runaway Railway": {
-        displayName: "Runaway Railway"
+        displayName: "Runaway Railway",
+        hidden: false
     },
     "Millennium Falcon: Smugglers Run": {
-        displayName: "Millennium Falcon"
+        displayName: "Millennium Falcon",
+        hidden: false
     },
     "Millennium Falcon: Smugglers Run Single Rider": {
-        displayName: "Millennium Falcon: Single Rider"
+        displayName: "Millennium Falcon: Single Rider",
+        hidden: false
     },
     "Star Wars: Rise of the Resistance": {
-        displayName: "Resistance"
+        displayName: "Resistance",
+        hidden: false
     },
     "Star Wars: Rise of the Resistance Single Rider": {
-        displayName: "Resistance: Single Rider"
+        displayName: "Resistance: Single Rider",
+        hidden: false
     },
     "Rock ’n’ Roller Coaster Starring The Muppets": {
-        displayName: "Rock 'n' Roller Coaster"
+        displayName: "Rock 'n' Roller Coaster",
+        hidden: false
     },
     "Rock 'n' Roller Coaster Starring Aerosmith Single Rider": {
-        displayName: "Rock 'n' Roller Coaster: Single Rider"
+        displayName: "Rock 'n' Roller Coaster: Single Rider",
+        hidden: false
     },
     "The Twilight Zone™ Tower of Terror": {
-        displayName: "Tower of Terror"
+        displayName: "Tower of Terror",
+        hidden: false
     },
     "Kilimanjaro Safaris": {
-        displayName: "Safari"
+        displayName: "Safari",
+        hidden: false
     },
     "Expedition Everest - Legend of the Forbidden Mountain": {
-        displayName: "Everest"
+        displayName: "Everest",
+        hidden: false
     },
     "Expedition Everest - Legend of the Forbidden Mountain Single Rider": {
-        displayName: "Everest: Single Rider"
+        displayName: "Everest: Single Rider",
+        hidden: false
     },
     "Kali River Rapids": {
-        displayName: "Rapids"
+        displayName: "Rapids",
+        hidden: false
     },
 
     // Hidden attractions
