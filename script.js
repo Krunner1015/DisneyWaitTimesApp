@@ -11,7 +11,7 @@ async function loadPark() {
     document.getElementById("rides").innerHTML = "<h2>Loading...</h2>";
 
     const response =
-        await fetch(`http://192.168.1.101:8000/waittimes/${park}`);
+        await fetch(`https://disneywaittimesapp-api.onrender.com/waittimes/${park}`);
 
     const data = await response.json();
 
