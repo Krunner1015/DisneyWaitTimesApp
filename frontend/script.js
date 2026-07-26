@@ -68,10 +68,22 @@ function displayWaitTimes(data) {
                 color = "orange";
             }
 
+            let waitText;
+
+            if (!ride.open) {
+                waitText = "Closed";
+            }
+            else if (ride.wait_time === 0) {
+                waitText = "Open";
+            }
+            else {
+                waitText = `${ride.wait_time} min`;
+            }
+
             rideDiv.innerHTML = `
                 <span class="dot ${color}"></span>
                 <span class="ride-name">${getRideName(ride.name)}</span>
-                <span class="wait-time">${ride.wait_time} min</span>
+                <span class="wait-time">${waitText}</span>
             `;
 
             ridesDiv.appendChild(rideDiv);
