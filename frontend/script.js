@@ -8,6 +8,8 @@ async function loadPark() {
 
     const park = document.getElementById("parkSelect").value;
 
+    document.getElementById("rides").innerHTML = "<h2>Loading...</h2>";
+
     const response =
         await fetch(`http://127.0.0.1:8000/waittimes/${park}`);
 
