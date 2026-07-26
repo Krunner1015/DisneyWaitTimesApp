@@ -1,3 +1,5 @@
+let refreshTimer = null;
+
 const button = document.getElementById("loadButton");
 
 button.addEventListener("click", loadPark);
@@ -12,8 +14,17 @@ async function loadPark() {
     const data = await response.json();
 
     displayWaitTimes(data);
-}
 
+
+    // Start automatic refresh
+    if (refreshTimer) {
+        clearInterval(refreshTimer);
+    }
+
+    refreshTimer = setInterval(() => {
+        loadPark();
+    }, 60000);
+}
 
 function displayWaitTimes(data) {
 
