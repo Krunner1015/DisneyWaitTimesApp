@@ -10,6 +10,7 @@ async function loadPark() {
 
     document.getElementById("rides").innerHTML = "<h2>Loading...</h2>";
 
+    // Fetch wait times from the API
     const response =
         await fetch(`https://disneywaittimesapp-api.onrender.com/waittimes/${park}`);
 
