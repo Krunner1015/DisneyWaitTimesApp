@@ -1,4 +1,5 @@
 let refreshTimer = null;
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 const button = document.getElementById("loadButton");
 
@@ -34,7 +35,24 @@ function displayWaitTimes(data) {
     const ridesDiv = document.getElementById("rides");
 
     // Clear old results
-    ridesDiv.innerHTML = "";
+    ridesDiv.innerHTML = `
+        <span class="dot ${color}"></span>
+
+        <span class="ride-name">${getRideName(ride.name)}</span>
+
+        <span class="wait-time">${waitText}</span>
+
+        <span class="favorite">
+            ${isFavorite(ride.name) ? "⭐" : "☆"}
+        </span>
+    `;
+
+    const star = rideDiv.querySelector(".favorite");
+
+    star.addEventListener("click", (event) => {
+        event.stopPropagation();
+        toggleFavorite(ride.name);
+    });
 
     // Add park title
     const title = document.createElement("h2");
@@ -139,6 +157,23 @@ function getRideName(originalName) {
 
 function isHiddenRide(originalName) {
     return RIDE_DATA[originalName]?.hidden === true;
+}
+
+function isFavorite(rideName) {
+    return favorites.includes(rideName);
+}
+
+function toggleFavorite(rideName) {
+
+    if (isFavorite(rideName)) {
+        favorites = favorites.filter(name => name !== rideName);
+    } else {
+        favorites.push(rideName);
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+
+    loadPark();
 }
 
 if ("serviceWorker" in navigator) {
