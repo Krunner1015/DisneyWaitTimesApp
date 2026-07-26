@@ -94,7 +94,7 @@ function displayWaitTimes(data) {
             if (!ride.open) {
                 color = "gray";
             }
-            else if (ride.wait_time >= 60) {
+            else if (ride.wait_time >= 50) {
                 color = "red";
             }
             else if (ride.wait_time >= 30) {
@@ -138,4 +138,8 @@ function getRideName(originalName) {
 
 function isHiddenRide(originalName) {
     return RIDE_DATA[originalName]?.hidden === true;
+}
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
 }
