@@ -96,16 +96,6 @@ h3 {
     background-color: gray;
 }
 
-.favorite {
-    font-size: 24px;
-    cursor: pointer;
-    margin-left: 15px;
-    user-select: none;
-}
-
-.favorite:hover {
-    transform: scale(1.15);
-}
 
 /* Ride name */
 .ride-name {
