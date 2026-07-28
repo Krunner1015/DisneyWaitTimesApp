@@ -1,7 +1,8 @@
 let refreshTimer = null;
-let currentPark = 6;
+let currentPark = Number(localStorage.getItem("currentPark")) || 6;
 
 const parkButtons = document.querySelectorAll(".park-button");
+console.log("Buttons found:", parkButtons.length);
 
 parkButtons.forEach(button => {
 
@@ -13,7 +14,11 @@ parkButtons.forEach(button => {
 
         button.classList.add("active");
 
+        showLoading();
+
         loadPark();
+
+        localStorage.setItem("currentPark", currentPark);
 
     });
 
@@ -23,23 +28,27 @@ async function loadPark() {
 
     const park = currentPark;
 
-    // Fetch wait times from the API
-    const response =
-        await fetch(`https://disneywaittimesapp-api.onrender.com/waittimes/${park}`);
+    showLoading();
 
-    const data = await response.json();
+    try {
 
-    displayWaitTimes(data);
+        const response =
+            await fetch(`https://disneywaittimesapp-api.onrender.com/waittimes/${park}`);
 
+        const data = await response.json();
 
-//     // Start automatic refresh
-//     if (refreshTimer) {
-//         clearInterval(refreshTimer);
-//     }
+        displayWaitTimes(data);
 
-//     refreshTimer = setInterval(() => {
-//         loadPark();
-//     }, 60000);
+    } 
+    
+    catch (error) {
+
+        console.error(error);
+
+        document.getElementById("rides").innerHTML = `
+            <h2>Unable to load wait times</h2>
+        `;
+    }
 }
 
 function displayWaitTimes(data) {
@@ -160,6 +169,15 @@ function getRideName(originalName) {
 
 function isHiddenRide(originalName) {
     return RIDE_DATA[originalName]?.hidden === true;
+}
+
+function showLoading() {
+
+    const ridesDiv = document.getElementById("rides");
+
+    ridesDiv.innerHTML = `
+        <h2>Loading wait times...</h2>
+    `;
 }
 
 if ("serviceWorker" in navigator) {
