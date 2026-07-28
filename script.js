@@ -2,6 +2,7 @@ let refreshTimer = null;
 let currentPark = Number(localStorage.getItem("currentPark")) || 6;
 
 const parkButtons = document.querySelectorAll(".park-button");
+console.log(parkButtons);
 console.log("Buttons found:", parkButtons.length);
 
 parkButtons.forEach(button => {
@@ -64,17 +65,8 @@ function displayWaitTimes(data) {
 
     ridesDiv.appendChild(title);
 
-    const updated = document.getElementById("updatedTime");
-
-    updated.textContent =
-        "Last Updated: " +
-        new Date().toLocaleTimeString([], {
-            hour: "numeric",
-            minute: "2-digit"
-        });
-
     // Show last updated time
-    const updated = document.createElement("p");
+    const updatedText = document.createElement("p");
 
     const firstRide = data.lands
         .flatMap(land => land.rides)
@@ -83,15 +75,15 @@ function displayWaitTimes(data) {
     if (firstRide) {
         const time = new Date(firstRide.last_updated);
 
-        updated.textContent =
+        updatedText.textContent =
             "Updated: " + time.toLocaleTimeString([], {
                 hour: "numeric",
                 minute: "2-digit"
             });
 
-        updated.className = "updated-time";
+        updatedText.className = "updated-time";
 
-        ridesDiv.appendChild(updated);
+        ridesDiv.appendChild(updatedText);
     }
 
 
