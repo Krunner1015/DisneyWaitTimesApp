@@ -1,12 +1,31 @@
 let refreshTimer = null;
+let currentPark = 6;
 
 const button = document.getElementById("loadButton");
 
 button.addEventListener("click", loadPark);
 
+const parkButtons = document.querySelectorAll(".park-button");
+
+parkButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        currentPark = Number(button.dataset.park);
+
+        parkButtons.forEach(b => b.classList.remove("active"));
+
+        button.classList.add("active");
+
+        loadPark();
+
+    });
+
+});
+
 async function loadPark() {
 
-    const park = document.getElementById("parkSelect").value;
+    const park = currentPark;
 
     document.getElementById("rides").innerHTML = "<h2>Loading...</h2>";
 
@@ -42,6 +61,14 @@ function displayWaitTimes(data) {
 
     ridesDiv.appendChild(title);
 
+    const updated = document.getElementById("updatedTime");
+
+    updated.textContent =
+        "Last Updated: " +
+        new Date().toLocaleTimeString([], {
+            hour: "numeric",
+            minute: "2-digit"
+        });
 
     // Show last updated time
     const updated = document.createElement("p");

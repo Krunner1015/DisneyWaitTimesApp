@@ -19,16 +19,29 @@
     <h1>🏰 MagicRoute</h1>
     <p class="subtitle">Disney Wait Times</p>
 
-    <select id="parkSelect">
-        <option value="6">Magic Kingdom</option>
-        <option value="5">Epcot</option>
-        <option value="7">Hollywood Studios</option>
-        <option value="8">Animal Kingdom</option>
-    </select>
+    <div class="park-grid">
 
-    <button id="loadButton">
-        Load Wait Times
-    </button>
+        <button class="park-button active" data-park="6">
+            🏰<br>Magic
+        </button>
+
+        <button class="park-button" data-park="5">
+            🌐<br>EPCOT
+        </button>
+
+        <button class="park-button" data-park="7">
+            🎬<br>Studios
+        </button>
+
+        <button class="park-button" data-park="8">
+            🌳<br>Animal
+        </button>
+
+    </div>
+
+    <p class="updated-time" id="updatedTime"></p>
+
+    <hr>
 
     <div id="rides"></div>
 
