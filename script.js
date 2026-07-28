@@ -1,10 +1,6 @@
 let refreshTimer = null;
 let currentPark = 6;
 
-const button = document.getElementById("loadButton");
-
-button.addEventListener("click", loadPark);
-
 const parkButtons = document.querySelectorAll(".park-button");
 
 parkButtons.forEach(button => {
@@ -27,8 +23,6 @@ async function loadPark() {
 
     const park = currentPark;
 
-    document.getElementById("rides").innerHTML = "<h2>Loading...</h2>";
-
     // Fetch wait times from the API
     const response =
         await fetch(`https://disneywaittimesapp-api.onrender.com/waittimes/${park}`);
@@ -38,14 +32,14 @@ async function loadPark() {
     displayWaitTimes(data);
 
 
-    // Start automatic refresh
-    if (refreshTimer) {
-        clearInterval(refreshTimer);
-    }
+//     // Start automatic refresh
+//     if (refreshTimer) {
+//         clearInterval(refreshTimer);
+//     }
 
-    refreshTimer = setInterval(() => {
-        loadPark();
-    }, 60000);
+//     refreshTimer = setInterval(() => {
+//         loadPark();
+//     }, 60000);
 }
 
 function displayWaitTimes(data) {
@@ -171,3 +165,5 @@ function isHiddenRide(originalName) {
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("service-worker.js");
 }
+
+loadPark();
